@@ -1,0 +1,27 @@
+<div *ngIf="detail">
+  <img src="assets/img/{{category}}/{{id+1}}.jpg">
+<h4 *ngFor="let item of detail | keyvalue">
+  {{ item.key }} : {{ item.value }}
+</h4>
+<form fxLayout="column row"
+      #form="ngForm" (ngSubmit)="addComment(form)">
+  <mat-form-field>
+    <textarea matInput placeholder="Say something" name="comment" ngModel></textarea>
+  </mat-form-field>
+
+  <div fxLayout="row column" fxLayoutAlign="space-between">
+    <button type="submit" mat-raised-button color="primary">
+      Add Comment
+    </button>
+    <button mat-raised-button color="primary" (click)="back()">
+      back
+    </button>
+  </div>
+</form>
+<h4>Comments</h4>
+<mat-card *ngFor="let c of comments;let i = index" [style.margin]="'10px'">
+  {{ c }}
+</mat-card>
+</div>
+<app-list *ngIf="!detail" [category]="category" [currentURL]="currentURL" [currentPage]="currentPage"></app-list>
+

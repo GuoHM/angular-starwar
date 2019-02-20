@@ -1,0 +1,6 @@
+<mat-card *ngFor="let c of categories"
+          [style.margin]="'10px'"
+          [style.text-align]="'center'"
+          (click)="OnMatCardClickEvent(c)">
+  {{ c | uppercase }}
+</mat-card>

@@ -1,0 +1,21 @@
+<div *ngIf="!selectedItem">
+  <mat-card *ngFor="let c of listitems;let i = index"
+            [style.text-align]="'center'"
+            (click)="showDetails(i,c)"
+            >
+    {{ c | uppercase }}
+  </mat-card>
+<div fxLayout="row column" fxLayoutAlign="space-between">
+     <div fxLayoutAlign="start end">
+  <button *ngIf="previousPage" type="reset" mat-raised-button color="primary" (click)="goToPreviousPage()">
+    <
+  </button>
+</div>
+<div  fxLayoutAlign="end start">
+  <button *ngIf="nextPage" type="submit" mat-raised-button color="primary" (click)="goToNextPage()" fxLayoutAlign="start end">
+   >
+  </button>
+</div>
+</div>
+</div>
+<app-detail  *ngIf="selectedItem" [detail]="selectedItem"  [comments]="commentList" [category]="category" [name]="name" [id]="id" [currentURL]="currentURL" [currentPage]="currentPage" ></app-detail>
